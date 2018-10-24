@@ -56,10 +56,17 @@ exports.getVideoInfo = function(req, response) {
       res.json()
         .then(json => {
           console.log(json.data.result)
+          var viewer = 0
+          if(json.data.result.rows !== undefined){
+            viewer = json.data.result.rows[0][1]
+          }
           var message = "successfully.";
             var good_result = {
               video_id: video_id,
-              viewers: json.data.result.rowCount,
+              start: start_date,
+              end: end_date,
+              viewers: viewer,
+              // data : json.data.result.rows
             };
             common.sendFullResponse(response, 200, good_result, message);
         })
