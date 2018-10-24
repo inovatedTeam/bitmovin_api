@@ -59,9 +59,7 @@ exports.getVideoInfo = function(req, response) {
           var message = "successfully.";
             var good_result = {
               video_id: video_id,
-              start: start_date,
-              end: end_date,
-              user_data: json.data.result.rows,
+              viewers: json.data.result.rowCount,
             };
             common.sendFullResponse(response, 200, good_result, message);
         })
